@@ -2,28 +2,17 @@
 
 This homework serves two purposes:
 
-1. provide the student an opportunity to learn more about data engineering tools of their interest,
+1. Explore and explain various data engineering tools and how they are categorized,
 
-2. introduce the student to the workflow used to submit assignments in this class.
+2. Learn the workflow and processes to be successful in this class.
 
 [Here is a link](https://virginiacommonwealth.instructure.com/courses/105097/assignments/966515) to the homework assignment in Canvas.
 
-Your report should be stored in the ``./report`` folder.  Any assets (PNG, JPG, etc.) should be stored underneath in ``./report/assets``.
-
-FURTHER, you must modify this README to make it your own:
-
-* GITHUB provides [good explanations of README.md'(https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) files,
-
-* Here is a list of example *awesome* README files: <https://github.com/matiassingers/awesome-readme>
-
-Part of your score for this assignment is how well you update/modify this README.
-
 ## Files and Folders
 
-*./src* - contains the scaffold QMD file homework 1. Your job is to modify this document and render it to *html*.  The *html* file will
-be created in the same *./src* folder.
+*./src* - contains the QMD report file overviewing the data engineering tool landscape in 2024 and the relation of certain toolsets to bioinformatics.
 
-*./samples* - contains several QMD files. Your job is to render these files and exam the output.  Output for these files will be in the *./docs* folder.
+*./samples* - contains several sample QMD files to aid in learning how to render with quarto as well as the different possibilities with QMD rendering.
 
-*./docs* - contains resulting files from quarto render operations.  *You should NEVER directly store files in ./docs.* Rather, you should let Quarto maintain the contents of the *./docs* folder using settings in the quarto project file, *_quarto.yml*.
+*./docs* - contains resulting files from quarto render operations.  *NEVER directly store files in ./docs.* Rather, let Quarto maintain the contents of the *./docs* folder using settings in the quarto project file, *_quarto.yml*
 

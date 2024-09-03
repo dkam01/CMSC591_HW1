@@ -1,8 +1,8 @@
 ---
 title: Homework 1 - Open Source Tools
 author:
-    - name: Skippy McBoatface
-      email: skippy@mcboatface.com
+    - name: Dhilan Kamani
+      email: kamanids@vcu.edu
 format:
     html:
         embed-resources: true
@@ -21,11 +21,11 @@ format:
 
 ---
 
-(Add an intro paragraph here.  What is the purpose of this report?)
+This report provides an exploration into the new landscape of data engineering tools as of 2024. It overviews the nine major categories, as Mr. Sadeghi outlines in his article, as well as a more detailed exploration of some of the tool subcategories, specifically looking at subcategories important to applications in bioinformatics.
 
 # Open Source Data Engineering Tools
 
-Author Alireza Sadeghi offers a nice overview of the [2024 ata engineering landscape](https://practicaldataengineering.substack.com/p/open-source-data-engineering-landscape) in the on-line web site [Practical Data Engineering Substack](https://practicaldataengineering.substack.com/).
+Author Alireza Sadeghi offers a nice overview of the [2024 data engineering landscape](https://practicaldataengineering.substack.com/p/open-source-data-engineering-landscape) in the on-line web site [Practical Data Engineering Substack](https://practicaldataengineering.substack.com/).
 
 ![](assets/tools-2024.webp)
 
@@ -43,116 +43,96 @@ Data Lake platforms are designed to store vast amounts of raw data in its native
 
 ## Data Integration
 
-(add description here)
+Data Integration tools enable the combination of data from different sources and formats in a united view. These tools are used for ETL processes (Extract, Transform, Load) as well as migration and synchronization of data. Multiple data sources are supported, such as, databases, APIs, file systems, and cloud services.
 
 ## Data Processing and Computation
 
-(add description here)
+Data processing and computation tools are used to transform, analyze, and compute large volumes of data. These tools support both batch and real-time processing, enabling organizations to perform complex calculations, data transformations, and aggregations. 
 
 ## Workflow and DataOps
 
-(add description here)
+Workflow and Data Ops tools help automate, orchestrate, and manage data pipelines and workflows. These tools provide scheduling, monitoring, and error-handling capabilities to ensure that data processes run smoothly and efficiently. They are essential for maintaining data pipeline reliability, scalability, and resilience in production environments.
 
 ## Data Infrastructure and Monitoring
 
-(add description here)
+Data infrastructure and monitoring tools provide the foundational components and oversight necessary to maintain and optimize data systems. These tools offer infrastructure management, resource allocation, performance monitoring, and alerting capabilities. They are crucial for ensuring data systems are running efficiently and identifying issues before they impact business operations.
 
 ## ML/AI Platform
 
-(add description here)
+ML/AI platforms provide the infrastructure and tools required to build, train, deploy, and manage machine learning and artificial intelligence models. These platforms facilitate data preparation, model experimentation, and operationalization, supporting end-to-end ML workflows. They often include features like model monitoring, versioning, and governance to ensure effective ML model management.
 
 ## Metadata Management
 
-(add description here)
+Metadata management tools help in organizing, managing, and utilizing metadata, which is data about data. These tools provide capabilities for data cataloging, lineage tracking, and metadata governance, making it easier for organizations to understand their data assets. Effective metadata management enhances data discoverability, quality, and compliance.
 
 ## Analytics and Visualization
 
-(add description here)
+Analytics and visualization tools enable the exploration and analysis of data through interactive dashboards, reports, and visualizations. These tools allow users to derive insights from data, create data-driven stories, and make informed decisions. They support various data sources and offer features like real-time analytics, predictive modeling, and data exploration.
 
-# Digging into the details
+# Subcategory Exploration
 
-In the following sections I identify three subcategories of data engineering tools of greatest interest to me.
+In the following sections I identify three subcategories of data engineering tools of greatest interest to me, specifically how they can be used in bioinformatics.
 
-## Relational OLTP DBMS
+## Distributed File Systems (DFS)
 
-This section is provided as an example.  You MAY NOT submit *relational OLTP DBMS* as part of your project 1!
+### Basic Description
 
-**Relational Online Transaction Processing (OLTP) Database Management Systems (DBMS)** are designed to manage and execute a large number of short, transactional operations that involve the insertion, update, and deletion of data in a relational database. These systems are optimized for environments where data integrity, consistency, and speed are critical due to the high volume of concurrent transactions.
+A Distributed File System (DFS) is a file storage system that manages files across multiple servers, making it appear as a single file system to the user. DFSs are designed to handle large volumes of data by distributing the storage load across many machines, allowing for scalable, fault-tolerant, and highly available storage solutions. They enable efficient storage and retrieval of massive datasets, typically in a data lake architecture, by supporting large-scale data processing and analytics.
 
-### Unique Characteristics of Relational OLTP DBMS:
+### Importance
 
-1. **Structured Data Storage:**
-   - Data is stored in a structured format using tables that define specific schemas, with rows representing records and columns representing attributes of the data.
-   - The use of primary and foreign keys enforces relationships between different tables, maintaining data integrity across the database.
+DFSs are crucial for modern data lake platforms because they allow organizations to store and manage vast amounts of data that can be structured, semi-structured, or unstructured. They provide high availability and reliability by replicating data across multiple servers, ensuring data is protected against hardware failures. Additionally, DFSs enable parallel processing, which is essential for big data analytics, machine learning, and large-scale data processing tasks.
 
-2. **ACID Compliance:**
-   - OLTP systems are designed to be ACID-compliant (Atomicity, Consistency, Isolation, Durability). This ensures that all transactions are processed reliably, even in the event of a system failure.
-   - Atomicity guarantees that all parts of a transaction are completed; otherwise, the transaction is aborted.
-   - Consistency ensures that each transaction brings the database from one valid state to another.
-   - Isolation keeps transactions separated until they are completed, preventing concurrency issues.
-   - Durability ensures that once a transaction is committed, it is permanently recorded in the database, even in the case of a power failure.
+### Comparison to Relational OLTP databases
 
-3. **Concurrency Control:**
-   - OLTP systems employ sophisticated concurrency control mechanisms, such as locking and transaction isolation levels, to manage simultaneous data access by multiple users or processes.
-   - These mechanisms prevent conflicts and ensure that transactions are executed in a consistent and reliable manner, even under heavy load.
+DFSs are fundamentally different from Relational Online Transaction Processing (OLTP) databases in several ways. While OLTP databases are designed for handling transactional data with ACID (Atomicity, Consistency, Isolation, Durability) properties, DFSs are optimized for storing large-scale, unstructured or semi-structured data with eventual consistency. OLTP databases typically run on a single server or a small cluster, focusing on quick, real-time updates and queries, whereas DFSs are designed to distribute data across many servers, optimizing for throughput and fault tolerance rather than low-latency transactions.
 
-4. **High Availability and Reliability:**
-   - OLTP databases are designed for environments that require high availability and reliability. They often include features such as replication, clustering, and failover to ensure continuous operation even during hardware or network failures.
-   - Backup and recovery mechanisms are also integral to these systems, ensuring that data can be restored to a consistent state in the event of a failure.
+### Bioinformatics Application
 
-5. **Scalability:**
-   - While traditionally OLTP systems were scaled vertically by adding more resources to a single server, modern OLTP DBMS solutions support horizontal scaling, enabling distributed transactions across multiple servers or nodes.
-   - Distributed OLTP systems can handle a larger number of transactions by partitioning data and processing load across multiple instances.
+In bioinformatics, DFSs are invaluable for storing and managing large datasets such as genomic sequences, protein structures, and various biological data types. For example, genomic data generated from next-generation sequencing (NGS) can be several terabytes or even petabytes in size, necessitating a distributed storage solution. DFSs allow bioinformaticians to store vast amounts of raw and processed data in a single, accessible location, supporting collaborative research and enabling efficient data sharing, parallel processing, and large-scale data analysis workflows.
 
-### Usage of Relational OLTP DBMS:
+## Parallel Python Processing
 
-1. **Business Applications:**
-   
-   OLTP systems are widely used in business applications that require the processing of large volumes of simple, repetitive transactions, such as order processing, inventory management, financial transactions, and customer relationship management (CRM) systems.
-   
-   Examples include e-commerce platforms, banking systems, and ERP (Enterprise Resource Planning) software.
+### Basic Description
 
-2. **Real-Time Transaction Processing:**
+Parallel Python Execution refers to the ability to run Python code concurrently across multiple processors or cores, enabling faster execution of computationally intensive tasks. This approach leverages parallel computing techniques to distribute workloads across several processing units, significantly reducing the time required to perform large-scale data processing or complex computations. Parallel Python Execution is often facilitated by libraries such as multiprocessing, joblib, Dask, and PySpark.
 
-   OLTP systems are ideal for applications requiring real-time data entry, updates, and querying, where the accuracy and speed of transactions directly impact business operations.
+### Importance
 
-   They are often used in industries such as finance, telecommunications, retail, and healthcare, where real-time data processing is critical.
+Parallel Python Execution is essential for data processing and computation because it maximizes the use of available computational resources, leading to more efficient and quicker processing times. By parallelizing tasks, it allows data engineers and scientists to handle larger datasets and perform more complex analyses in a fraction of the time required by single-threaded execution. This capability is particularly valuable in fields that require heavy computational loads, such as machine learning, scientific computing, and big data analytics.
 
-3. **Data Integrity and Consistency:**
-   
-   OLTP databases are crucial in environments where data integrity and consistency are non-negotiable. For example, in financial systems, it is vital that all transactions are recorded accurately and that balances reflect all processed transactions immediately.
+### Comparison to Relational OLTP databases
 
-4. **User-Driven Querying:**
-   
-   OLTP systems support user-driven querying, allowing end-users to retrieve and interact with data through applications in real-time. These queries are typically simple and involve accessing specific records or performing updates on existing data.
+Relational OLTP databases are designed for managing transactions and supporting CRUD (Create, Read, Update, Delete) operations with a focus on maintaining data integrity and consistency through ACID transactions. In contrast, Parallel Python Execution is not concerned with transaction management or data consistency in a database context. Instead, it focuses on accelerating computation by breaking tasks into smaller chunks that can be executed simultaneously. While OLTP databases aim for quick, real-time response times for individual queries, Parallel Python Execution is about maximizing throughput for data processing tasks by leveraging concurrency.
 
-### Examples of Open-Source Relational OLTP DBMS:
+### Bioinformatics Application
 
-**PostgreSQL:** A powerful, open-source relational database system that is known for its robustness, extensibility, and support for complex queries and transactions.
+In bioinformatics, Parallel Python Execution can be applied to accelerate various computational tasks, such as sequence alignment, genome assembly, and phylogenetic analysis, which are computationally intensive and often involve large datasets. For instance, parallelizing the execution of algorithms for comparing DNA sequences across multiple cores can significantly reduce the processing time required for large-scale genomic studies. This capability allows researchers to run more experiments in less time, increasing the efficiency of data analysis and accelerating scientific discoveries.
 
-**MySQL:** A widely-used open-source relational database known for its ease of use, reliability, and performance, particularly in web-based applications.
+## Metadata Platforms
 
-**MariaDB:** A fork of MySQL, MariaDB is designed to be highly compatible with MySQL while offering additional features and performance improvements.
+### Basic Description
 
-**SQLite:** A lightweight, embedded SQL database engine that is self-contained and requires minimal setup, commonly used in mobile apps and small to medium-sized applications.
+A Metadata Platform is a system that provides tools and functionalities for managing metadata, which is data about other data. These platforms offer capabilities for cataloging, discovering, and governing data assets, helping organizations maintain a comprehensive view of their data landscape. They typically include features for tracking data lineage, auditing data usage, and managing data access policies, ensuring that metadata is accurate, up-to-date, and accessible to users.
 
-These relational OLTP DBMS tools are foundational in many organizations, ensuring that transactional data is handled efficiently and reliably, forming the backbone of countless business operations worldwide.
+### Importance
 
-## (Your interest category 1)
+Metadata Platforms are vital because they enable organizations to understand their data assets, improve data quality, and ensure compliance with data governance policies. By providing a centralized repository for metadata, these platforms make it easier for data engineers, analysts, and scientists to discover and understand the data available to them, promoting better data utilization and reducing the time spent searching for or cleaning data. Metadata management is also crucial for ensuring transparency and accountability in data handling, which is increasingly important for regulatory compliance.
 
-## (Your interest category 2)
+### Comparison to Relational OLTP databases
 
-## (Your interest category 3)
+While Relational OLTP databases focus on storing and managing data with a structure defined by tables and schemas, a Metadata Platform is concerned with managing the data about that data, such as its origin, structure, usage, and transformation history. OLTP databases typically support fast, transaction-based access to data but do not provide comprehensive tools for tracking data lineage, cataloging datasets, or managing data governance policies. In contrast, Metadata Platforms are designed to provide these capabilities, enabling a more holistic view of data assets across an organization.
 
+### Bioinformatics Application
+
+In bioinformatics, Metadata Platforms can be applied to manage the vast amount of metadata associated with biological data, such as sequencing data, experimental results, and computational models. These platforms help researchers and scientists track the provenance of datasets, understand the transformations applied to raw data, and maintain compliance with data-sharing regulations. For example, a Metadata Platform can catalog genomic datasets along with their associated metadata, such as sample source, sequencing method, and quality metrics, facilitating more effective data management and enabling reproducible research in bioinformatics.
 
 # Reflection
 
-Convert these questions into brief paragraph responses (two or three sentence).
+I like the introductory nature of this project. It requires a base level of understanding, but the nature of an exploration through all of these types of data engineering tools is useful, because prior to this project, I'd say my knowledge on the topic was minimal. While I'm not an expert now, having to see which categories of tools would be of more or less use to me specifically was extremely informative, given that I am used to working with different types of data and files than your typical CMSC student.
 
-* what did you like about this project?
+The hardest thing for me to accomplish was selecting the subcategories to delve into deeper. I wanted to choose categories with tools that are more useful to bioinformatics, specifically the handling and analysis of data.
 
-* what did you find hardest about this project?
+There weren't any surprises on this project. I don't think I realized how many tools there were that essentially accomplish the same tasks, with only one or two functionalities that make one tool better than another for a specific task, but it wasn't a surprise.
 
-* what did you find most surprising about this assignment?
-
-* how would you approach this project differently next time?
+I wouldn't, I think I handled the project well, seeing as it was pretty much just research. One thing would be to actually check my storage capacity and be better about cleaning junk files from my computer.
